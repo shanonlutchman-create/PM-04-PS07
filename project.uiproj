@@ -1,0 +1,6 @@
+{
+  "Name": "PM04-PS07",
+  "ProjectType": "Process",
+  "Description": "PS07",
+  "MainFile": "Main.xaml"
+}

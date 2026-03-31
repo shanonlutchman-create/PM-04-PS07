@@ -1,0 +1,2 @@
+.local-chromium/Chrome/Win64-121.0.6167.85/chrome-win64/chrome.dll filter=lfs diff=lfs merge=lfs -text
+.local-chromium/Chrome/Win64-138.0.7204.101/chrome-win64/chrome.dll filter=lfs diff=lfs merge=lfs -text
