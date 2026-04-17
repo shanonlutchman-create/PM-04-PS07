@@ -30,6 +30,7 @@
       <x:String>System.Reflection</x:String>
       <x:String>System.ComponentModel</x:String>
       <x:String>System.Xml.Serialization</x:String>
+      <x:String>System.Numerics</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -83,9 +84,10 @@
       <AssemblyReference>System.Private.Xml</AssemblyReference>
       <AssemblyReference>System.Data.SqlClient</AssemblyReference>
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="1509,594.6566666666666" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="1561,720" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:List(x:String)" Name="listSuspiciousAccount" />
       <Variable x:TypeArguments="sd:DataTable" Name="dtTrasactions" />
@@ -110,12 +112,21 @@
         <OutArgument x:TypeArguments="x:Double" x:Key="out_dblAmountThresholdLocal">[dblAmountThreshold]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="Invoke - ReadData.xaml" sap:VirtualizedContainerService.HintSize="450,168" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Workflows\ReadData.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="Invoke - ReadData.xaml" sap:VirtualizedContainerService.HintSize="450,177" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Workflows\ReadData.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="x:String" x:Key="in_strTransactionsPath">[strTransactionsPath]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_strSuspiciousPath">[strSuspiciousPath]</InArgument>
         <OutArgument x:TypeArguments="scg:List(x:String)" x:Key="out_listSuspicious">[listSuspiciousAccount]</OutArgument>
         <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dtTrasactions">[dtTrasactions]</OutArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="ProcessTransactions - Invoke Workflow File (Workflows\ProcessTransactions.xaml)" sap:VirtualizedContainerService.HintSize="450,168" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Workflows\ProcessTransactions.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:Double" x:Key="in_dblAmountThreshold">[dblAmountThreshold]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_strTemplatePath">[strTemplatePath]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_strOutputFolder">[strOutputFolder]</InArgument>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtTrasactions">[dtTrasactions]</InArgument>
+        <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_listSuspicious">[listSuspiciousAccount]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
   </Sequence>
