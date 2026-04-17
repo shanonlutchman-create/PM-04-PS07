@@ -1,4 +1,22 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="GenerateReport" VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="GenerateReport_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="GenerateReport" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:upap="clr-namespace:UiPath.PDF.Activities.PDF;assembly=UiPath.PDF.Activities" xmlns:upapn="clr-namespace:UiPath.PDF.Activities.PDF.NetCore;assembly=UiPath.PDF.Activities" xmlns:upr="clr-namespace:UiPath.Platform.ResourceHandling;assembly=UiPath.Platform" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_strReason" Type="InArgument(x:String)" />
+    <x:Property Name="in_strOutputFolder" Type="InArgument(x:String)" />
+    <x:Property Name="in_strTemplatePath" Type="InArgument(x:String)" />
+    <x:Property Name="in_strRecipientMasked" Type="InArgument(x:String)" />
+    <x:Property Name="in_strSenderMasked" Type="InArgument(x:String)" />
+    <x:Property Name="in_transactionVerified" Type="InArgument(x:String)" />
+    <x:Property Name="in_transactionCountry" Type="InArgument(x:String)" />
+    <x:Property Name="in_trasactionType" Type="InArgument(x:String)" />
+    <x:Property Name="in_transactionCurrency" Type="InArgument(x:String)" />
+    <x:Property Name="in_transactionAmount" Type="InArgument(x:Double)" />
+    <x:Property Name="in_transactionDate" Type="InArgument(x:String)" />
+    <x:Property Name="in_transactionID" Type="InArgument(x:String)" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap2010:WorkflowViewState.IdRef>GenerateReport_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -25,6 +43,16 @@
       <x:String>System.Windows.Markup</x:String>
       <x:String>GlobalVariablesNamespace</x:String>
       <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Numerics</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+      <x:String>UiPath.PDF.Activities.PDF</x:String>
+      <x:String>UiPath.PDF.Activities.PDF.Enums</x:String>
+      <x:String>UiPath.DocumentUnderstanding.Digitizer.Contracts.Pdf</x:String>
+      <x:String>UiPath.PDF.Activities.PDF.NetCore</x:String>
+      <x:String>UiPath.PDF.Activities</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -50,13 +78,112 @@
       <AssemblyReference>System.Xml.Linq</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities</AssemblyReference>
       <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>NPOI.Core</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.Watcher</AssemblyReference>
+      <AssemblyReference>System.IO.Packaging</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.AccessControl</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.PDF.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.DocumentUnderstanding.Digitizer.Contracts</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="GenerateReport" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="GenerateReport" sap:VirtualizedContainerService.HintSize="1561,1552" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="strAmountFormatted" />
+      <Variable x:TypeArguments="x:String" Name="strPdfOutputPath" />
+      <Variable x:TypeArguments="x:String" Name="strHTMLPath" />
+      <Variable x:TypeArguments="x:String" Name="strHTMLContent" />
+    </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
+    <Assign DisplayName="Assign - strAmountFormatted" sap:VirtualizedContainerService.HintSize="452,175" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[strAmountFormatted]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[in_transactionAmount.ToString("N2")]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign DisplayName="Assign -  strPdfOutputPath" sap:VirtualizedContainerService.HintSize="452,175" sap2010:WorkflowViewState.IdRef="Assign_2">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[strPdfOutputPath]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[system.IO.Path.Combine(in_strOutputFolder, "Report_" &amp; in_transactionID &amp; ".pdf")]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign DisplayName="Assign - strHTMLPath" sap:VirtualizedContainerService.HintSize="452,175" sap2010:WorkflowViewState.IdRef="Assign_3">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[strHTMLPath]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[System.IO.Path.Combine(System.IO.Path.GetTempPath(), "Report_" &amp; in_transactionID &amp; ".html" )]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign DisplayName="Assign - Build HTML with replkace placeholder values" sap:VirtualizedContainerService.HintSize="452,175" sap2010:WorkflowViewState.IdRef="Assign_4">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[strHTMLContent]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">["&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset='UTF-8'/&gt;&lt;style&gt;body{font-family:Helvetica,Arial,sans-serif;margin:40px;color:#222;}h1{color:#b30000;border-bottom:2px solid #b30000;padding-bottom:8px;}table{width:100%;border-collapse:collapse;margin-top:20px;}td{padding:10px 14px;border:1px solid #ddd;vertical-align:top;}td:first-child{font-weight:bold;background:#f5f5f5;width:35%;}tr:nth-child(even) td:first-child{background:#ececec;}.footer{margin-top:30px;font-size:11px;color:#888;border-top:1px solid #ccc;padding-top:10px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;Rapid Transfer &amp;ndash; High Risk Transaction Report&lt;/h1&gt;&lt;table&gt;&lt;tr&gt;&lt;td&gt;Transaction ID&lt;/td&gt;&lt;td&gt;" &amp; in_transactionID &amp; "&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Date&lt;/td&gt;&lt;td&gt;" &amp; in_transactionDate &amp; "&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Sender Account (masked)&lt;/td&gt;&lt;td&gt;" &amp; in_strSenderMasked &amp; "&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Recipient Account (masked)&lt;/td&gt;&lt;td&gt;" &amp; in_strRecipientMasked &amp; "&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Amount&lt;/td&gt;&lt;td&gt;" &amp; strAmountFormatted &amp; "&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Currency&lt;/td&gt;&lt;td&gt;" &amp; in_transactionCurrency &amp; "&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Transfer Type&lt;/td&gt;&lt;td&gt;" &amp; in_trasactionType &amp; "&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Country&lt;/td&gt;&lt;td&gt;" &amp; in_transactionCountry &amp; "&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Verified&lt;/td&gt;&lt;td&gt;" &amp; in_transactionVerified &amp; "&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Criteria Met&lt;/td&gt;&lt;td&gt;" &amp; in_strReason &amp; "&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Analyst Notes&lt;/td&gt;&lt;td&gt;Flagged by automated pre-screening bot. Requires analyst review.&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;div class='footer'&gt;Generated by Rapid Transfer Compliance Bot &amp;bull; Report_" &amp; in_transactionID &amp; ".pdf&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:WriteTextFile File="{x:Null}" Output="{x:Null}" DisplayName="Write Text File - Temp HTML " FileName="[strHTMLPath]" sap:VirtualizedContainerService.HintSize="452,176" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[strHTMLContent]" />
+    <upapn:ConvertHtmlToPDF FileName="{x:Null}" FooterFileName="{x:Null}" FooterHtml="{x:Null}" FooterResourceFile="{x:Null}" HeaderFileName="{x:Null}" HeaderHtml="{x:Null}" HeaderResourceFile="{x:Null}" Margin="{x:Null}" OutputFile="{x:Null}" OutputFileName="{x:Null}" ResourceFile="{x:Null}" DisplayName="Convert Html to PDF" FooterInputMode="Content" HeaderInputMode="Content" sap:VirtualizedContainerService.HintSize="452,123" Html="[strHTMLPath]" sap2010:WorkflowViewState.IdRef="ConvertHtmlToPDF_1" InputMode="Content" KeepBackground="True" PaperSize="A4" Scale="1">
+      <upapn:ConvertHtmlToPDF.FooterItem>
+        <upap:ItemArgument x:TypeArguments="upr:IResource" FileName="{x:Null}" ResourceFile="{x:Null}" />
+      </upapn:ConvertHtmlToPDF.FooterItem>
+      <upapn:ConvertHtmlToPDF.HeaderItem>
+        <upap:ItemArgument x:TypeArguments="upr:IResource" FileName="{x:Null}" ResourceFile="{x:Null}" />
+      </upapn:ConvertHtmlToPDF.HeaderItem>
+      <upapn:ConvertHtmlToPDF.Item>
+        <upap:ItemArgument x:TypeArguments="upr:IResource" FileName="{x:Null}" ResourceFile="{x:Null}" />
+      </upapn:ConvertHtmlToPDF.Item>
+    </upapn:ConvertHtmlToPDF>
+    <If Condition="[System.IO.File.Exists(strPdfOutputPath)]" DisplayName="If  - PDF has been written successfully " sap:VirtualizedContainerService.HintSize="452,530" sap2010:WorkflowViewState.IdRef="If_1">
+      <If.Then>
+        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,226" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:LogMessage DisplayName="Log Message - PDF written successfully " sap:VirtualizedContainerService.HintSize="416,166" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;[GenerateReport] PDF written successfully at:  &quot; + strPdfOutputPath]" />
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="450,174" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Throw DisplayName="Throw - PDF not written" Exception="[New System.Exception(&quot;[GenerateReport] Failed to write PDF &quot; + strPdfOutputPath)]" sap:VirtualizedContainerService.HintSize="416,114" sap2010:WorkflowViewState.IdRef="Throw_1" />
+        </Sequence>
+      </If.Else>
+    </If>
   </Sequence>
 </Activity>
