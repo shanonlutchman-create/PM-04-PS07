@@ -1,0 +1,229 @@
+Test file 
+
+
+Microsoft Windows [Version 10.0.26100.8037]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\lutchmans>cd C:\Users\lutchmans\OneDrive - Alexander Forbes Group Services Pty Ltd\Documents\UiPath\PM04-PS07
+
+C:\Users\lutchmans\OneDrive - Alexander Forbes Group Services Pty Ltd\Documents\UiPath\PM04-PS07>git lfs install
+Updated Git hooks.
+Git LFS initialized.
+
+C:\Users\lutchmans\OneDrive - Alexander Forbes Group Services Pty Ltd\Documents\UiPath\PM04-PS07>git lfs track "*.dll"
+Tracking "*.dll"
+
+C:\Users\lutchmans\OneDrive - Alexander Forbes Group Services Pty Ltd\Documents\UiPath\PM04-PS07>git add .gitattributes
+
+C:\Users\lutchmans\OneDrive - Alexander Forbes Group Services Pty Ltd\Documents\UiPath\PM04-PS07>git status
+Refresh index: 100% (252/252), done.
+On branch withHardCodedConfigDetails
+Your branch is ahead of 'PM-04-PS07/withHardCodedConfigDetails' by 6 commits.
+  (use "git push" to publish your local commits)
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   .gitattributes
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   .gitignore
+        modified:   .local-chromium/Chrome/Win64-121.0.6167.85/chrome-win64/D3DCompiler_47.dll
+        deleted:    .local-chromium/Chrome/Win64-121.0.6167.85/chrome-win64/chrome.exe
+        modified:   .local-chromium/Chrome/Win64-121.0.6167.85/chrome-win64/chrome_elf.dll
+        modified:   .local-chromium/Chrome/Win64-121.0.6167.85/chrome-win64/chrome_wer.dll
+        modified:   .local-chromium/Chrome/Win64-121.0.6167.85/chrome-win64/dxcompiler.dll
+        modified:   .local-chromium/Chrome/Win64-121.0.6167.85/chrome-win64/dxil.dll
+        modified:   .local-chromium/Chrome/Win64-121.0.6167.85/chrome-win64/libEGL.dll
+        modified:   .local-chromium/Chrome/Win64-121.0.6167.85/chrome-win64/libGLESv2.dll
+        modified:   .local-chromium/Chrome/Win64-121.0.6167.85/chrome-win64/mojo_core.dll
+        modified:   .local-chromium/Chrome/Win64-121.0.6167.85/chrome-win64/vk_swiftshader.dll
+        modified:   .local-chromium/Chrome/Win64-121.0.6167.85/chrome-win64/vulkan-1.dll
+        modified:   .local-chromium/Chrome/Win64-138.0.7204.101/chrome-win64/D3DCompiler_47.dll
+        modified:   .local-chromium/Chrome/Win64-138.0.7204.101/chrome-win64/chrome.dll
+        modified:   .local-chromium/Chrome/Win64-138.0.7204.101/chrome-win64/chrome_elf.dll
+        modified:   .local-chromium/Chrome/Win64-138.0.7204.101/chrome-win64/chrome_wer.dll
+        modified:   .local-chromium/Chrome/Win64-138.0.7204.101/chrome-win64/dxcompiler.dll
+        modified:   .local-chromium/Chrome/Win64-138.0.7204.101/chrome-win64/dxil.dll
+        modified:   .local-chromium/Chrome/Win64-138.0.7204.101/chrome-win64/libEGL.dll
+        modified:   .local-chromium/Chrome/Win64-138.0.7204.101/chrome-win64/libGLESv2.dll
+        modified:   .local-chromium/Chrome/Win64-138.0.7204.101/chrome-win64/vk_swiftshader.dll
+        modified:   .local-chromium/Chrome/Win64-138.0.7204.101/chrome-win64/vulkan-1.dll
+
+
+C:\Users\lutchmans\OneDrive - Alexander Forbes Group Services Pty Ltd\Documents\UiPath\PM04-PS07>git add .
+
+C:\Users\lutchmans\OneDrive - Alexander Forbes Group Services Pty Ltd\Documents\UiPath\PM04-PS07>git status
+On branch withHardCodedConfigDetails
+Your branch is ahead of 'PM-04-PS07/withHardCodedConfigDetails' by 6 commits.
+  (use "git push" to publish your local commits)
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   .gitattributes
+        modified:   .gitignore
+        modified:   .local-chromium/Chrome/Win64-121.0.6167.85/chrome-win64/D3DCompiler_47.dll
+        deleted:    .local-chromium/Chrome/Win64-121.0.6167.85/chrome-win64/chrome.exe
+        modified:   .local-chromium/Chrome/Win64-121.0.6167.85/chrome-win64/chrome_elf.dll
+        modified:   .local-chromium/Chrome/Win64-121.0.6167.85/chrome-win64/chrome_wer.dll
+        modified:   .local-chromium/Chrome/Win64-121.0.6167.85/chrome-win64/dxcompiler.dll
+        modified:   .local-chromium/Chrome/Win64-121.0.6167.85/chrome-win64/dxil.dll
+        modified:   .local-chromium/Chrome/Win64-121.0.6167.85/chrome-win64/libEGL.dll
+        modified:   .local-chromium/Chrome/Win64-121.0.6167.85/chrome-win64/libGLESv2.dll
+        modified:   .local-chromium/Chrome/Win64-121.0.6167.85/chrome-win64/mojo_core.dll
+        modified:   .local-chromium/Chrome/Win64-121.0.6167.85/chrome-win64/vk_swiftshader.dll
+        modified:   .local-chromium/Chrome/Win64-121.0.6167.85/chrome-win64/vulkan-1.dll
+        modified:   .local-chromium/Chrome/Win64-138.0.7204.101/chrome-win64/D3DCompiler_47.dll
+        modified:   .local-chromium/Chrome/Win64-138.0.7204.101/chrome-win64/chrome.dll
+        modified:   .local-chromium/Chrome/Win64-138.0.7204.101/chrome-win64/chrome_elf.dll
+        modified:   .local-chromium/Chrome/Win64-138.0.7204.101/chrome-win64/chrome_wer.dll
+        modified:   .local-chromium/Chrome/Win64-138.0.7204.101/chrome-win64/dxcompiler.dll
+        modified:   .local-chromium/Chrome/Win64-138.0.7204.101/chrome-win64/dxil.dll
+        modified:   .local-chromium/Chrome/Win64-138.0.7204.101/chrome-win64/libEGL.dll
+        modified:   .local-chromium/Chrome/Win64-138.0.7204.101/chrome-win64/libGLESv2.dll
+        modified:   .local-chromium/Chrome/Win64-138.0.7204.101/chrome-win64/vk_swiftshader.dll
+        modified:   .local-chromium/Chrome/Win64-138.0.7204.101/chrome-win64/vulkan-1.dll
+
+
+C:\Users\lutchmans\OneDrive - Alexander Forbes Group Services Pty Ltd\Documents\UiPath\PM04-PS07>git commit -m "Installed git large files stoarage for tracking .dll files"
+[withHardCodedConfigDetails 31f6132] Installed git large files stoarage for tracking .dll files
+ 23 files changed, 2 insertions(+)
+ create mode 100644 .gitattributes
+ delete mode 100644 .local-chromium/Chrome/Win64-121.0.6167.85/chrome-win64/chrome.exe
+
+C:\Users\lutchmans\OneDrive - Alexander Forbes Group Services Pty Ltd\Documents\UiPath\PM04-PS07>git lfs migrate import --everything --include=".local-chromium/Chrome/Win64-121.0.6167.85/chrome-win64/chrome.dll"
+Sorting commits: ..., done.
+Rewriting commits: 100% (17/17), done.
+  ProcessingTranactions         2e5112774160e57164f545881c631de5983935b1 -> 53a79f5db3beff92f3d3da2d9dc4e37f717b3223
+  main                          eaba2225a3593ba17b777c11a5b6dda93eff6aed -> df855c3affd6bf0c8f330998173e6b32bf73fc07
+  withHardCodedConfigDetails    31f6132e7a22d52c85d88eb7e2c2721ae850ef73 -> 0cc74aeb98db29951047af63820a8a0736571176
+Updating refs: ..., done.
+Checkout: ..., done.
+
+C:\Users\lutchmans\OneDrive - Alexander Forbes Group Services Pty Ltd\Documents\UiPath\PM04-PS07>git push --force
+info: please complete authentication in your browser...
+Uploading LFS objects: 100% (21/21), 582 MB | 5.8 MB/s, done.
+Enumerating objects: 375, done.
+Counting objects: 100% (375/375), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (351/351), done.
+error: RPC failed; HTTP 408 curl 22 The requested URL returned error: 408
+send-pack: unexpected disconnect while reading sideband packet
+Writing objects: 100% (375/375), 193.96 MiB | 4.28 MiB/s, done.
+Total 375 (delta 120), reused 0 (delta 0), pack-reused 0 (from 0)
+fatal: the remote end hung up unexpectedly
+Everything up-to-date
+
+C:\Users\lutchmans\OneDrive - Alexander Forbes Group Services Pty Ltd\Documents\UiPath\PM04-PS07>git push --force
+Uploading LFS objects: 100% (21/21), 582 MB | 0 B/s, done.
+Enumerating objects: 375, done.
+Counting objects: 100% (375/375), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (351/351), done.
+error: RPC failed; HTTP 408 curl 22 The requested URL returned error: 408
+send-pack: unexpected disconnect while reading sideband packet
+Writing objects: 100% (375/375), 193.96 MiB | 6.20 MiB/s, done.
+Total 375 (delta 120), reused 0 (delta 0), pack-reused 0 (from 0)
+fatal: the remote end hung up unexpectedly
+Everything up-to-date
+
+C:\Users\lutchmans\OneDrive - Alexander Forbes Group Services Pty Ltd\Documents\UiPath\PM04-PS07>git status
+On branch withHardCodedConfigDetails
+Your branch and 'PM-04-PS07/withHardCodedConfigDetails' have diverged,
+and have 16 and 9 different commits each, respectively.
+  (use "git pull" if you want to integrate the remote branch with yours)
+
+nothing to commit, working tree clean
+
+C:\Users\lutchmans\OneDrive - Alexander Forbes Group Services Pty Ltd\Documents\UiPath\PM04-PS07>git status
+On branch withHardCodedConfigDetails
+Your branch and 'PM-04-PS07/withHardCodedConfigDetails' have diverged,
+and have 16 and 9 different commits each, respectively.
+  (use "git pull" if you want to integrate the remote branch with yours)
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        test.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+C:\Users\lutchmans\OneDrive - Alexander Forbes Group Services Pty Ltd\Documents\UiPath\PM04-PS07>git branch
+  ProcessingTranactions
+  main
+* withHardCodedConfigDetails
+
+C:\Users\lutchmans\OneDrive - Alexander Forbes Group Services Pty Ltd\Documents\UiPath\PM04-PS07>git add .
+
+C:\Users\lutchmans\OneDrive - Alexander Forbes Group Services Pty Ltd\Documents\UiPath\PM04-PS07>git status
+On branch withHardCodedConfigDetails
+Your branch and 'PM-04-PS07/withHardCodedConfigDetails' have diverged,
+and have 16 and 9 different commits each, respectively.
+  (use "git pull" if you want to integrate the remote branch with yours)
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   test.txt
+
+
+C:\Users\lutchmans\OneDrive - Alexander Forbes Group Services Pty Ltd\Documents\UiPath\PM04-PS07>git commit -m "added a test file to test changes"
+[withHardCodedConfigDetails 172ddbe] added a test file to test changes
+ 1 file changed, 1 insertion(+)
+ create mode 100644 test.txt
+
+C:\Users\lutchmans\OneDrive - Alexander Forbes Group Services Pty Ltd\Documents\UiPath\PM04-PS07>git status
+On branch withHardCodedConfigDetails
+Your branch and 'PM-04-PS07/withHardCodedConfigDetails' have diverged,
+and have 17 and 9 different commits each, respectively.
+  (use "git pull" if you want to integrate the remote branch with yours)
+
+nothing to commit, working tree clean
+
+C:\Users\lutchmans\OneDrive - Alexander Forbes Group Services Pty Ltd\Documents\UiPath\PM04-PS07>git push --force
+Uploading LFS objects: 100% (21/21), 582 MB | 0 B/s, done.
+Enumerating objects: 378, done.
+Counting objects: 100% (378/378), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (353/353), done.
+error: RPC failed; HTTP 408 curl 22 The requested URL returned error: 408
+send-pack: unexpected disconnect while reading sideband packet
+Writing objects: 100% (378/378), 194.26 MiB | 6.54 MiB/s, done.
+Total 378 (delta 120), reused 0 (delta 0), pack-reused 0 (from 0)
+fatal: the remote end hung up unexpectedly
+Everything up-to-date
+
+C:\Users\lutchmans\OneDrive - Alexander Forbes Group Services Pty Ltd\Documents\UiPath\PM04-PS07>git push --force
+Uploading LFS objects: 100% (21/21), 582 MB | 0 B/s, done.
+Enumerating objects: 378, done.
+Counting objects: 100% (378/378), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (353/353), done.
+error: RPC failed; HTTP 408 curl 22 The requested URL returned error: 408
+send-pack: unexpected disconnect while reading sideband packet
+Writing objects: 100% (378/378), 194.26 MiB | 6.78 MiB/s, done.
+Total 378 (delta 120), reused 0 (delta 0), pack-reused 0 (from 0)
+fatal: the remote end hung up unexpectedly
+Everything up-to-date
+
+C:\Users\lutchmans\OneDrive - Alexander Forbes Group Services Pty Ltd\Documents\UiPath\PM04-PS07>git lfs migrate import --everything --include=".local-chromium/Chrome/Win64-138.0.7204.101/chrome-win64/chrome.dll"
+Sorting commits: ..., done.
+Rewriting commits: 100% (27/27), done.
+  ProcessingTranactions         53a79f5db3beff92f3d3da2d9dc4e37f717b3223 -> 517e36e4becac573a170f9290b02880d6fed84ab
+  main                          df855c3affd6bf0c8f330998173e6b32bf73fc07 -> 4141eb7edbf54891cd50bff6dfb8241e6e10ba65
+  withHardCodedConfigDetails    172ddbe0cb6f7f3253ea9132a173805510e679d6 -> 8b0ec22041aca56d05eb9c0249f756e0169c4c86
+Updating refs: ..., done.
+Checkout: ..., done.
+
+C:\Users\lutchmans\OneDrive - Alexander Forbes Group Services Pty Ltd\Documents\UiPath\PM04-PS07>git push --force
+Uploading LFS objects: 100% (21/21), 582 MB | 0 B/s, done.
+Enumerating objects: 377, done.
+Counting objects: 100% (377/377), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (352/352), done.
+Writing objects: 100% (377/377), 84.06 MiB | 4.73 MiB/s, done.
+Total 377 (delta 120), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (120/120), done.
+To https://github.com/shanonlutchman-create/PM-04-PS07.git
+ + 2e51127...8b0ec22 withHardCodedConfigDetails -> withHardCodedConfigDetails (forced update)
+
+C:\Users\lutchmans\OneDrive - Alexander Forbes Group Services Pty Ltd\Documents\UiPath\PM04-PS07>
