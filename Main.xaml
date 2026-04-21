@@ -87,8 +87,9 @@
       <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="1561,720" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="1533,720" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
+      <Variable x:TypeArguments="sd:DataTable" Name="dtHighRisk" />
       <Variable x:TypeArguments="scg:List(x:String)" Name="listSuspiciousAccount" />
       <Variable x:TypeArguments="sd:DataTable" Name="dtTrasactions" />
       <Variable x:TypeArguments="x:Double" Name="dblAmountThreshold" />
@@ -127,6 +128,7 @@
         <InArgument x:TypeArguments="x:String" x:Key="in_strOutputFolder">[strOutputFolder]</InArgument>
         <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtTrasactions">[dtTrasactions]</InArgument>
         <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_listSuspicious">[listSuspiciousAccount]</InArgument>
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dtHighRisk">[dtHighRisk]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
   </Sequence>
