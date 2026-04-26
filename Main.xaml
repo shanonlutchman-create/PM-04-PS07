@@ -87,7 +87,7 @@
       <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="1533,720" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="1533,954" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="dtHighRisk" />
       <Variable x:TypeArguments="scg:List(x:String)" Name="listSuspiciousAccount" />
@@ -121,7 +121,7 @@
         <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dtTrasactions">[dtTrasactions]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="ProcessTransactions - Invoke Workflow File (Workflows\ProcessTransactions.xaml)" sap:VirtualizedContainerService.HintSize="450,168" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Workflows\ProcessTransactions.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="ProcessTransactions - Invoke Workflow File (Workflows\ProcessTransactions.xaml)" sap:VirtualizedContainerService.HintSize="450,177" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Workflows\ProcessTransactions.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="x:Double" x:Key="in_dblAmountThreshold">[dblAmountThreshold]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_strTemplatePath">[strTemplatePath]</InArgument>
@@ -129,6 +129,12 @@
         <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtTrasactions">[dtTrasactions]</InArgument>
         <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_listSuspicious">[listSuspiciousAccount]</InArgument>
         <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dtHighRisk">[dtHighRisk]</OutArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="Invoke Workflow File Summary Report" sap:VirtualizedContainerService.HintSize="450,225" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Workflows\SummaryReport.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_strOutputFolder">[strOutputFolder]</InArgument>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtHighRisk">[dtHighRisk]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
   </Sequence>
