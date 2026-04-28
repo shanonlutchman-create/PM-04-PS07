@@ -100,9 +100,12 @@
       <AssemblyReference>System.Linq.Queryable</AssemblyReference>
       <AssemblyReference>UiPath.Platform</AssemblyReference>
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>System.CodeDom</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="SummaryReport" sap:VirtualizedContainerService.HintSize="1533,715" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="SummaryReport" sap:VirtualizedContainerService.HintSize="1533,1709" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="strCSVOutpuPath" />
       <Variable x:TypeArguments="x:String" Name="strCSVcontentToWrite" />
@@ -112,7 +115,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign DisplayName="Assign - create a csv file strCSVOutPath" sap:VirtualizedContainerService.HintSize="450,175" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign DisplayName="Assign - create a csv file strCSVOutPath" sap:VirtualizedContainerService.HintSize="452,175" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[strCSVOutpuPath]</OutArgument>
       </Assign.To>
@@ -120,15 +123,58 @@
         <InArgument x:TypeArguments="x:String">[System.IO.Path.Combine(in_strOutputFolder,"High_risk_Transactions_summary.csv")]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:LogMessage DisplayName="Log Message  - SummaryReport Has Started" sap:VirtualizedContainerService.HintSize="450,175" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;[SummaryReport] Begin Writing: &quot; + in_dtHighRisk.Rows.Count().ToString() + strCSVOutpuPath]" />
-    <Assign DisplayName="Assign Create CSV content into strCSVcontentToWrite" sap:VirtualizedContainerService.HintSize="450,175" sap2010:WorkflowViewState.IdRef="Assign_2">
+    <ui:LogMessage DisplayName="Log Message  - SummaryReport Has Started" sap:VirtualizedContainerService.HintSize="452,175" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;[SummaryReport] Begin Writing: &quot; + in_dtHighRisk.Rows.Count().ToString() + strCSVOutpuPath]" />
+    <Assign DisplayName="Assign Create CSV content into strCSVcontentToWrite" sap:VirtualizedContainerService.HintSize="452,175" sap2010:WorkflowViewState.IdRef="Assign_2">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[strCSVcontentToWrite]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:String">[String.Join(Environment.NewLine, (New List(Of String) From {"TransactionID", "Amount", "RecipientAccount", "Reason"}).Concat(in_dtHighRisk.AsEnumerable().Select(Function(r) String.Format("{0},{1},{2},""""{3}""""", r("TransactionID").ToString().Trim(), r("Amount").ToString().Trim(), r("RecipientAccount").ToString().Trim(), r("Reason").ToString().Replace("""", """""").Trim()))))]</InArgument>
+        <InArgument x:TypeArguments="x:String">[String.Join(Environment.NewLine, (New List(Of String) From {"TransactionID,Amount,RecipientAccount,Reason"}).Concat(in_dtHighRisk.AsEnumerable().Select(Function(r) r("TransactionID").ToString() &amp; "," &amp; r("Amount").ToString() &amp; "," &amp; r("RecipientAccount").ToString() &amp; "," &amp; Chr(34) &amp; r("Reason").ToString().Replace(Chr(34), Chr(34) &amp; Chr(34)) &amp; Chr(34))))]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:WriteTextFile File="{x:Null}" Output="{x:Null}" DisplayName="Write Text File - To CSV File" FileName="[strCSVOutpuPath]" sap:VirtualizedContainerService.HintSize="450,167" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[strCSVcontentToWrite]" />
+    <ui:WriteTextFile File="{x:Null}" Output="{x:Null}" DisplayName="Write Text File - To CSV File" FileName="[strCSVOutpuPath]" sap:VirtualizedContainerService.HintSize="452,176" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[strCSVcontentToWrite]" />
+    <If Condition="[in_dtHighRisk.Rows.Count = 0]" DisplayName="If - Zero HighRisk Rows to Process" sap:VirtualizedContainerService.HintSize="452,455" sap2010:WorkflowViewState.IdRef="If_1">
+      <If.Then>
+        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,226" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:LogMessage DisplayName="Log Message - No High Risk Rows to process " sap:VirtualizedContainerService.HintSize="416,166" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Warn" Message="[&quot;[SummaryReport] No transactions flagged. Header-only CSV written.&quot;]" />
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="450,90" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </Sequence>
+      </If.Else>
+    </If>
+    <If Condition="[System.IO.file .Exists(strCSVOutpuPath)]" DisplayName="If - if CSV is written successfully " sap:VirtualizedContainerService.HintSize="452,530" sap2010:WorkflowViewState.IdRef="If_2">
+      <If.Then>
+        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,226" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:LogMessage DisplayName="Log Message - CSV written Successfully" sap:VirtualizedContainerService.HintSize="416,166" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Trace" Message="[&quot;[SummaryReport] High_Risk_Transactions_Summary.csv written successfully.&quot;]" />
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="450,174" sap2010:WorkflowViewState.IdRef="Sequence_5">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Throw DisplayName="Throw - CSV not written" Exception="[New System.Exception(&quot;[SummaryReport]: Failed to write CSV file: &quot; +strCSVOutpuPath)]" sap:VirtualizedContainerService.HintSize="416,114" sap2010:WorkflowViewState.IdRef="Throw_1" />
+        </Sequence>
+      </If.Else>
+    </If>
   </Sequence>
 </Activity>

@@ -108,15 +108,11 @@
       <AssemblyReference>System.Linq.Queryable</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="ReadData" sap:VirtualizedContainerService.HintSize="1503,1519" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="ReadData" sap:VirtualizedContainerService.HintSize="1533,1519" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="dtTrasactionsLocal" />
       <Variable x:TypeArguments="sd:DataTable" Name="dtSuspiciousRaw" />
-      <Variable x:TypeArguments="scg:List(x:String)" Name="listSuspiciousLocal">
-        <Variable.Default>
-          <VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="New List(Of String)()" />
-        </Variable.Default>
-      </Variable>
+      <Variable x:TypeArguments="scg:List(x:String)" Default="[New List(Of String)()]" Name="listSuspiciousLocal" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -124,7 +120,7 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="484,175" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;[ReadData] Reading data&quot; + in_strTransactionsPath]" />
-    <ui:ExcelApplicationScope SensitivityLabel="{x:Null}" DisplayName="Excel - Open the Daily_Transactions.xlsx" sap:VirtualizedContainerService.HintSize="484,285" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" SensitivityOperation="None" WorkbookPath="[in_strTransactionsPath]">
+    <ui:ExcelApplicationScope DisplayName="Excel - Open the Daily_Transactions.xlsx" EditPassword="{x:Null}" ExistingWorkbook="{x:Null}" sap:VirtualizedContainerService.HintSize="484,285" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" Password="{x:Null}" SecureEditPassword="{x:Null}" SecurePassword="{x:Null}" SensitivityLabel="{x:Null}" SensitivityOperation="None" Workbook="{x:Null}" WorkbookPath="[in_strTransactionsPath]">
       <ui:ExcelApplicationScope.Body>
         <ActivityAction x:TypeArguments="ui:WorkbookApplication">
           <ActivityAction.Argument>
@@ -139,7 +135,10 @@
             <ui:ExcelReadRange AddHeaders="True" DataTable="[dtTrasactionsLocal]" DisplayName="Read Range - All Rows from Sheet1" sap:VirtualizedContainerService.HintSize="416,83" sap2010:WorkflowViewState.IdRef="ExcelReadRange_1" SheetName="Sheet1">
               <ui:ExcelReadRange.Range>
                 <InArgument x:TypeArguments="x:String">
-                  <Literal x:TypeArguments="x:String" Value="" />
+                  <Literal x:TypeArguments="x:String">
+                    <Literal.Result>
+                      <OutArgument x:TypeArguments="x:String" />
+                    </Literal.Result></Literal>
                 </InArgument>
               </ui:ExcelReadRange.Range>
             </ui:ExcelReadRange>
@@ -148,7 +147,7 @@
       </ui:ExcelApplicationScope.Body>
     </ui:ExcelApplicationScope>
     <ui:LogMessage DisplayName="Log - Transactions Data Loaded" sap:VirtualizedContainerService.HintSize="484,175" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;[Read Data]&quot;  + dtTrasactionsLocal.Rows.Count.ToString() +&quot; - Transactions Loaded&quot;]" />
-    <ui:ReadCsvFile PathResource="{x:Null}" DataTable="[dtSuspiciousRaw]" Delimitator="Comma" DelimitatorForViewModel="Comma" DisplayName="Read CSV - Suspicious_Accounts data loaded" FilePath="[in_strSuspiciousPath]" sap:VirtualizedContainerService.HintSize="484,170" sap2010:WorkflowViewState.IdRef="ReadCsvFile_1" />
+    <ui:ReadCsvFile PathResource="{x:Null}" DataTable="[dtSuspiciousRaw]" Delimitator="Comma" DelimitatorForViewModel="Comma" DisplayName="Read CSV - Suspicious_Accounts data loaded" Encoding="{x:Null}" FilePath="[in_strSuspiciousPath]" sap:VirtualizedContainerService.HintSize="484,170" sap2010:WorkflowViewState.IdRef="ReadCsvFile_1" IgnoreQuotes="{x:Null}" />
     <Assign DisplayName="Assign - Building a listSuspiciousAccounts" sap:VirtualizedContainerService.HintSize="484,175" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="scg:List(x:String)">[listSuspiciousLocal]</OutArgument>
